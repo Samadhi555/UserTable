@@ -28,6 +28,10 @@ public class UserServiceImpl implements UserService {
     }
 
     public void saveUser(String name, String lastName, byte age) {
+        User user = new User(name, lastName, age);
+        if (getAllUsers().contains(user)) {
+            return;
+        }
         userDao.saveUser(name, lastName, age);
     }
 
